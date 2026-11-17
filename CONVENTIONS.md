@@ -1,0 +1,24 @@
+# Conventions: College Basketball Matchup Dashboard
+
+Read this before changing anything in this repo, and update it in the same pull request whenever a
+convention changes. The rules follow the NBA, NFL and CFB dashboards'.
+
+- Live site: GitHub Pages from `main`, repo root.
+- **Pull requests, merged after checks.** `main` is the live site. Hand changes go through a pull
+  request (one topic per PR): run the checks below, then merge (squash). Tell Ryan what went live.
+- **Automated commits straight to `main`:** only the **Rebuild college basketball data** Action (`data/`).
+- **Ask first** if anything is unclear or a change could break the live site.
+- **Out of scope here:** prediction and betting-model work belongs in rhyman7/bb-value-board.
+- **Look.** Keep `style.css` identical to the football sites' file; put basketball-only styles in
+  `cbb.css`. Team colors come with `data/data.json` (ESPN colors, filled in by `fillTeamColors()` in `teamcolors.js`); the helpers match the other sites.
+- **Writing on the page.** Plain words, full sentences, no jargon a casual fan wouldn't know without
+  a note on How to Read Matchups.
+- **Keep in step with rhyman7/nba.** The pages are the NBA site's, adapted. A fix to a shared page
+  or helper usually belongs in both repos.
+
+## Checks before merging
+
+1. `python scripts/build_data.py` and `python scripts/check_data.py` pass.
+2. Serve the folder (`python -m http.server`) and load `index.html`, one `matchup.html?game=<id>`,
+   `ratings.html`, `compare.html` and `how-to-read.html` headlessly at 1280 and 390 wide: no page
+   errors (failed requests to ESPN are fine when ESPN is unreachable) and no sideways scrolling.
